@@ -15,11 +15,18 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
   },
-  "include": ["./src/**/*.ts", "./config/**/*.ts"],
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+    ".eslintrc.js",
+    "./config/",
+    "webpack.config.ts"
+  ],
 
   "ts-node": {
     "compilerOptions": {
-      "module": "CommonJS"
+      "module": "CommonJS",
+//      "strictNullChecks": true,
     }
   }
 }
