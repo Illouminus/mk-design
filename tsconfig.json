@@ -15,14 +15,14 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
   },
-  "include": [
-    "./src/**/*.ts",
-    "./src/**/*.tsx",
-    ".eslintrc.js",
-    "./config/",
-    "webpack.config.ts",
-//    "./config/jest/jestSetup.ts"
-  ],
+//  "include": [
+//    "./src/**/*.ts",
+//    "./src/**/*.tsx",
+//    ".eslintrc.js",
+//    "./config/",
+//    "webpack.config.ts",
+////    "./config/jest/jestSetup.ts"
+//  ],
 
   "ts-node": {
     "compilerOptions": {

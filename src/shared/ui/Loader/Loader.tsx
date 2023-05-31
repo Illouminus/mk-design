@@ -1,6 +1,6 @@
 import React, { type FC } from 'react'
 import './Loader.scss'
-const Loader: FC = () => {
+export const Loader: FC = () => {
   return (
       <div className="lds-ring">
           <div></div>
@@ -10,5 +10,3 @@ const Loader: FC = () => {
       </div>
   )
 }
-
-export default Loader
