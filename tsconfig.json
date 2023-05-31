@@ -20,7 +20,8 @@
     "./src/**/*.tsx",
     ".eslintrc.js",
     "./config/",
-    "webpack.config.ts"
+    "webpack.config.ts",
+//    "./config/jest/jestSetup.ts"
   ],
 
   "ts-node": {
@@ -28,5 +29,6 @@
       "module": "CommonJS",
 //      "strictNullChecks": true,
     }
-  }
+  },
+
 }
