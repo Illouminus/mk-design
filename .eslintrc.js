@@ -17,7 +17,8 @@ module.exports = {
     // tsconfigRootDir: __dirname
   },
   plugins: [
-    'react'
+    'react',
+    'react-hooks'
   ],
   rules: {
     'react/jsx-indent': [2, 4],
@@ -38,6 +39,8 @@ module.exports = {
     '@typescript-eslint/prefer-nullish-coalescing': 0,
     '@typescript-eslint/strict-boolean-expressions': 0,
     '@typescript-eslint/no-unused-vars': 1,
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'error',
     // 'i18next/no-literal-string': ['error', {
     //   markupOnly: true,
     //   ignoreAttribute: ['data-testid', 'to']
