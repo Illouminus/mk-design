@@ -3,6 +3,7 @@ import { classNames } from 'shared/lib/classNames/classNames'
 import { useTranslation } from 'react-i18next'
 import cls from './Modal.module.scss'
 import { Portal } from 'shared/ui/Portal/Portal'
+import { useTheme } from 'app/providers/ThemeProvider'
 
 interface ModalProps {
   className?: string
@@ -20,6 +21,8 @@ export const Modal: FC<ModalProps> = (options: ModalProps) => {
   } = options
 
   const { t } = useTranslation()
+
+  const { theme } = useTheme()
 
   const closeHandler = (): void => {
     if (onClose) {
