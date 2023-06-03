@@ -1,0 +1,17 @@
+.InputWrapper{
+    display: flex;
+}
+
+
+.input {
+    border: none;
+    outline: none;
+    width: 100%;
+    color: transparent;
+    background: transparent;
+    text-shadow: 0 0 0 var(--primary-color);
+
+    &:focus {
+        outline: none;
+    }
+}

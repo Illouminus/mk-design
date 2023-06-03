@@ -1,15 +1,14 @@
-import React, { type FC, type ReactNode, useEffect } from 'react'
+import React, { type FC, lazy, type ReactNode, useEffect, useState } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
-import { useTranslation } from 'react-i18next'
 import cls from './Modal.module.scss'
 import { Portal } from 'shared/ui/Portal/Portal'
-import { useTheme } from 'app/providers/ThemeProvider'
 
 interface ModalProps {
   className?: string
   children?: ReactNode
   isOpen?: boolean
-  onClose: () => void
+  onClose?: () => void
+  lazy?: boolean
 }
 
 export const Modal: FC<ModalProps> = (options: ModalProps) => {
@@ -20,15 +19,19 @@ export const Modal: FC<ModalProps> = (options: ModalProps) => {
     children
   } = options
 
-  const { t } = useTranslation()
-
-  const { theme } = useTheme()
+  const [isMounted, setIsMounted] = useState(false)
 
   const closeHandler = (): void => {
     if (onClose) {
       onClose()
     }
   }
+
+  useEffect(() => {
+    if (isOpen) {
+      setIsMounted(true)
+    }
+  }, [isOpen])
 
   const onContentClick = (e: React.MouseEvent): void => {
     e.stopPropagation()
@@ -52,6 +55,9 @@ export const Modal: FC<ModalProps> = (options: ModalProps) => {
     [cls.opened]: isOpen
   }
 
+  if (lazy && !isMounted) {
+    return null
+  }
   return (
       <Portal>
           <div className={classNames(cls.Modal, mods, [className])}>
