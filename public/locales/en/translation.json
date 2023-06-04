@@ -8,5 +8,7 @@
   "Обновить страницу": "Reload Page",
   "Короткий язык": "En",
   "Главная": "Main",
-  "О сайте": "About"
+  "О сайте": "About",
+  "Вы ввели невыерный логин или пароль": "Wrong password or username",
+  "Форма авторизации": "Authorisation form"
 }

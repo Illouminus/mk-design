@@ -2,12 +2,14 @@ import { configureStore, type ReducersMapObject, type Store } from '@reduxjs/too
 import { type StateSchema } from './StateSchema'
 import { counterReducer } from 'entities/Counter'
 import { userReducer } from 'entities/User'
+import { loginReducer } from 'features/AuthByUsername'
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export function createReduxStore (initialState: StateSchema): Store<StateSchema> {
   const rootReducers: ReducersMapObject<StateSchema> = {
     user: userReducer,
-    counter: counterReducer
+    counter: counterReducer,
+    loginForm: loginReducer
   }
 
   return configureStore<StateSchema>({
@@ -16,3 +18,5 @@ export function createReduxStore (initialState: StateSchema): Store<StateSchema>
     preloadedState: initialState
   })
 }
+
+export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch']
