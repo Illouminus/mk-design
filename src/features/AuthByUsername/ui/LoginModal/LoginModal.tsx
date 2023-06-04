@@ -1,8 +1,9 @@
-import { type FC } from 'react'
+import { type FC, Suspense } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { useTranslation } from 'react-i18next'
 import { Modal } from 'shared/ui/Modal/Modal'
-import { LoginForm } from '../LoginForm/LoginForm'
+import { LoginFormLazy } from '../LoginForm/LoginForm.lazy'
+import { Loader } from 'shared/ui/Loader/Loader'
 
 interface LoginModalProps {
   className?: string
@@ -25,7 +26,10 @@ export const LoginModal: FC<LoginModalProps> = (options: LoginModalProps) => {
           onClose={onClose}
           lazy
       >
-          <LoginForm />
+          <Suspense fallback={<Loader />}>
+              <LoginFormLazy />
+          </Suspense>
+
       </Modal>
   )
 }
