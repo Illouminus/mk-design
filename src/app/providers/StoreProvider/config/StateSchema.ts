@@ -3,7 +3,6 @@ import { type UserSchema } from 'entities/User'
 import { type LoginSchema } from 'features/AuthByUsername'
 import {
   type AnyAction,
-  type EnhancedStore,
   type Reducer,
   type ReducersMapObject
 } from '@reduxjs/toolkit'
