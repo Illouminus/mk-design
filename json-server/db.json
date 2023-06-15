@@ -25,5 +25,14 @@
       "password": "123"
     }
   ],
-  "profile": { "name": "typicode" }
+  "profile": {
+    "first": "Edouard",
+    "lastname": "Baillot",
+    "age": 26,
+    "currency": "RUB",
+    "country": "France",
+    "city": "Paris",
+    "username": "admin",
+    "avatar": "https://images.samsung.com/is/image/samsung/assets/be_fr/evolve/security/logiciels-malveillants-hackers/digitale-hacker-mobile.jpg?$FB_TYPE_B_JPG$"
+  }
 }

@@ -17,10 +17,14 @@ void i18n
   .init({
     fallbackLng: 'ru',
     debug: __IS_DEV__,
-
+    returnNull: false,
     interpolation: {
       escapeValue: false // not needed for react as it escapes by default
     }
   })
-
+declare module 'i18next' {
+  interface CustomTypeOptions {
+    returnNull: false
+  }
+}
 export default i18n

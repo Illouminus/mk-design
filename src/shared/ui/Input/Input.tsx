@@ -1,15 +1,16 @@
 import React, { type FC, type InputHTMLAttributes, memo } from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
+import { classNames, type Mods } from 'shared/lib/classNames/classNames'
 
 import cls from './Input.module.scss'
 
-type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>
+type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readOnly'>
 interface InputProps extends HTMLInputProps {
   className?: string
-  value?: string
+  value?: string | number
   placeholder?: string
   onChange?: (value: string) => void
   autoFocus?: boolean
+  readonly?: boolean
 }
 
 export const Input: FC<InputProps> = memo((options: InputProps) => {
@@ -20,14 +21,18 @@ export const Input: FC<InputProps> = memo((options: InputProps) => {
     type = 'text',
     placeholder,
     autoFocus,
+    readonly,
     ...otherProps
   } = options
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
     onChange?.(e.target.value)
   }
+  const mods: Mods = {
+    [cls.readonly]: readonly
+  }
   return (
-      <div className={classNames(cls.InputWrapper, {}, [className])}>
+      <div className={classNames(cls.InputWrapper, mods, [className])}>
           <input
               type={type}
               value={value}
@@ -35,6 +40,7 @@ export const Input: FC<InputProps> = memo((options: InputProps) => {
               onChange={onChangeHandler}
               className={cls.input}
               autoFocus={autoFocus}
+              readOnly={readonly}
               {...otherProps}
           />
       </div>

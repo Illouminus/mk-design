@@ -21,13 +21,14 @@ import { DynamicModuleLoader, type ReducersList }
 
 interface LoginFormProps {
   className?: string
+  onSuccess?: () => void
 }
 
 const initialReducers: ReducersList = {
   loginForm: loginReducer
 }
 
-const LoginForm: FC<LoginFormProps> = memo(({ className }: LoginFormProps) => {
+const LoginForm: FC<LoginFormProps> = memo(({ className, onSuccess }: LoginFormProps) => {
   const { t } = useTranslation()
   const dispatch = useAppDispatch()
 
@@ -44,10 +45,13 @@ const LoginForm: FC<LoginFormProps> = memo(({ className }: LoginFormProps) => {
     dispatch(loginActions.setPassword(value))
   }, [dispatch])
 
-  const onLoginClick = useCallback(() => {
-    // @ts-expect-error adf
-    dispatch(loginByUsername({ password, username }))
-  }, [dispatch, password, username])
+  const onLoginClick = useCallback(async () => {
+    // eslint-disable-next-line @typescript-eslint/await-thenable
+    const result = await dispatch(loginByUsername({ password, username }))
+    if (result.meta.requestStatus === 'fulfilled') {
+      onSuccess?.()
+    }
+  }, [dispatch, onSuccess, password, username])
 
   return (
       <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount={true}>
@@ -72,6 +76,7 @@ const LoginForm: FC<LoginFormProps> = memo(({ className }: LoginFormProps) => {
               <Button
                   className={cls.loginBtn}
                   theme={ThemeButton.OUTLINE}
+                  //  eslint-disable-next-line
                   onClick={onLoginClick}
                   disabled={isLoading}
               >{t('войти')}

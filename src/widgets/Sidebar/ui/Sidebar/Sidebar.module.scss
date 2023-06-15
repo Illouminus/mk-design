@@ -32,21 +32,8 @@
     gap: 10px;
 }
 
-.item {
-    margin-left: 10px;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-
-.icon {
-    fill: var(--inverted-primary-color);
-}
 
 
-.link {
-    margin-left: 15px;
-}
 
 .collapsed {
     width: var(--sidebar-width-collapsed);

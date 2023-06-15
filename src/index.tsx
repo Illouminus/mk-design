@@ -7,18 +7,18 @@ import 'app/styles/index.scss'
 import 'shared/config/i18n/i18n'
 import { StoreProvider } from 'app/providers/StoreProvider'
 
-const domNode = document.getElementById('root')
+const domNode = document.getElementById('root')!
 const root = createRoot(domNode)
 
 root.render(
-    <StoreProvider>
-        <BrowserRouter>
+    <BrowserRouter>
+        <StoreProvider>
             <ErrorBoundary>
                 <ThemeProvider>
                     <App />
                 </ThemeProvider>
             </ErrorBoundary>
-        </BrowserRouter>
-    </StoreProvider>
+        </StoreProvider>
+    </BrowserRouter>
 
 )

@@ -1,5 +1,5 @@
-import React, { type FC, lazy, type ReactNode, useEffect, useState } from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
+import React, { type FC, type ReactNode, useEffect, useState } from 'react'
+import { classNames, type Mods } from 'shared/lib/classNames/classNames'
 import cls from './Modal.module.scss'
 import { Portal } from 'shared/ui/Portal/Portal'
 
@@ -16,6 +16,7 @@ export const Modal: FC<ModalProps> = (options: ModalProps) => {
     className,
     isOpen,
     onClose,
+    lazy,
     children
   } = options
 
@@ -40,7 +41,7 @@ export const Modal: FC<ModalProps> = (options: ModalProps) => {
   useEffect(() => {
     const keyHandler = (e: KeyboardEvent): void => {
       if (e.code === 'Escape' && isOpen) {
-        onClose()
+        onClose?.()
       }
     }
 
@@ -51,7 +52,7 @@ export const Modal: FC<ModalProps> = (options: ModalProps) => {
     }
   }, [isOpen, onClose])
 
-  const mods: Record<string, boolean> = {
+  const mods: Mods = {
     [cls.opened]: isOpen
   }
 

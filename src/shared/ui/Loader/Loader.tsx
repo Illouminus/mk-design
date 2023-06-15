@@ -1,6 +1,6 @@
-import React, { type FC } from 'react'
+import React, { type FC, memo } from 'react'
 import './Loader.scss'
-export const Loader: FC = () => {
+export const Loader: FC = memo(() => {
   return (
       <div className="lds-ring">
           <div></div>
@@ -9,4 +9,4 @@ export const Loader: FC = () => {
           <div></div>
       </div>
   )
-}
+})

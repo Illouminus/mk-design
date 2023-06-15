@@ -42,16 +42,17 @@ module.exports = {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'error',
     'react/display-name': 0,
-    // 'i18next/no-literal-string': ['error', {
-    //   markupOnly: true,
-    //   ignoreAttribute: ['data-testid', 'to']
-    // }],
+    '@typescript-eslint/naming-convention': 0,
+    '@typescript-eslint/no-non-null-assertion': 0,
+    '@typescript-eslint/explicit-function-return-type': 0,
     'max-len': ['error', {
       ignoreComments: true,
       code: 100
     }]
   },
   globals: {
-    __IS_DEV__: true
+    __IS_DEV__: true,
+    __API__: true,
+    __PROJECT__: true
   }
 }

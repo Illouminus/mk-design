@@ -10,7 +10,7 @@ export const App: FC = () => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(userActions.initAuthData)
+    dispatch(userActions.initAuthData())
   }, [dispatch])
 
   return (
