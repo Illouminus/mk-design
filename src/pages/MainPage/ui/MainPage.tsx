@@ -5,7 +5,7 @@ const MainPage: FC = memo(() => {
   const { t } = useTranslation('main')
 
   return (
-      <div>
+      <div style={{ color: 'red' }}>
           {t('Главная')}
       </div>
   )
