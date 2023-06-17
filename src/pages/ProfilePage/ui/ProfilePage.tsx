@@ -77,7 +77,7 @@ const ProfilePage: FC<ProfilePageProps> = memo(({ className }: ProfilePageProps)
     dispatch(profileActions.updateProfile({ country }))
   }, [dispatch])
   return (
-      <DynamicModuleLoader reducers={reducers} >
+      <DynamicModuleLoader reducers={reducers} removeAfterUnmount={true}>
           <div className={classNames('', {}, [className])}>
               <ProfilePageHeader />
               {validateErrors?.length && validateErrors.map((err) => (
