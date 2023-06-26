@@ -21,6 +21,9 @@ import { type Currency } from 'entities/Currency'
 import { type Country } from 'entities/Country'
 import { Text, TextTheme } from 'shared/ui/Text/Text'
 import { ValidateProfileError } from 'entities/Profile/model/types/profile'
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
+import { useParams } from 'react-router-dom'
+import { Page } from 'shared/ui/Page/Page'
 
 const reducers: ReducersList = {
   profile: profileReducer
@@ -36,6 +39,7 @@ const ProfilePage: FC<ProfilePageProps> = memo(({ className }: ProfilePageProps)
   const error = useSelector(getProfileError)
   const readOnly = useSelector(getProfileReadOnly)
   const validateErrors = useSelector(getProfileValidateErrors)
+  const { id } = useParams<{ id: string }>()
   const { t } = useTranslation('profile')
   const validateErrorTranslation = {
     [ValidateProfileError.SERVER_ERROR]: t('Серверная ошибка при сохранении'),
@@ -45,11 +49,11 @@ const ProfilePage: FC<ProfilePageProps> = memo(({ className }: ProfilePageProps)
     [ValidateProfileError.INCORRECT_USER_CITY]: t('Некоректный город')
   }
   const dispatch = useAppDispatch()
-  useEffect(() => {
-    if (__PROJECT__ !== 'storybook') {
-      void dispatch(fetchProfileData())
+  useInitialEffect(() => {
+    if (id) {
+      void dispatch(fetchProfileData(id))
     }
-  }, [dispatch])
+  })
 
   const onChangeFirstname = useCallback((value?: string) => {
     dispatch(profileActions.updateProfile({ first: value || '' }))
@@ -78,7 +82,7 @@ const ProfilePage: FC<ProfilePageProps> = memo(({ className }: ProfilePageProps)
   }, [dispatch])
   return (
       <DynamicModuleLoader reducers={reducers} removeAfterUnmount={true}>
-          <div className={classNames('', {}, [className])}>
+          <Page className={classNames('', {}, [className])}>
               <ProfilePageHeader />
               {validateErrors?.length && validateErrors.map((err) => (
                   <Text
@@ -101,7 +105,7 @@ const ProfilePage: FC<ProfilePageProps> = memo(({ className }: ProfilePageProps)
                   onChangeCurrency={onChangeCurrency}
                   onChangeCountry={onChangeCountry}
               />
-          </div>
+          </Page>
       </DynamicModuleLoader>
 
   )

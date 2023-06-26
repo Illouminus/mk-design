@@ -5,9 +5,16 @@ import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDeco
 import { Theme } from 'app/providers/ThemeProvider'
 
 const meta: Meta<typeof CommentCard> = {
-  title: 'shared/CommentCard',
+  title: 'entities/CommentCard',
   component: CommentCard,
-  args: {}
+  args: {
+    comment:
+      {
+        id: '1',
+        user: { id: '1', username: 'user1' },
+        text: 'comment1'
+      }
+  }
 }
 
 export default meta
@@ -16,4 +23,10 @@ type Story = StoryObj<typeof CommentCard>
 export const Normal: Story = {}
 export const Dark: Story = {
   decorators: [ThemeDecorator(Theme.DARK)]
+}
+
+export const Loading: Story = {
+  args: {
+    isLoading: true
+  }
 }

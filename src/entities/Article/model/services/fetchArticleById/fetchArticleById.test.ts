@@ -14,6 +14,10 @@ const data: Article = {
   views: 123,
   createdAt: 'string',
   type: [ArticleType.IT],
+  user: {
+    id: '1',
+    username: 'admin'
+  },
   blocks: [
     {
       id: '1',

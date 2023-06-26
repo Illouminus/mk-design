@@ -1,0 +1,26 @@
+
+
+
+.LIST {
+    .card {
+        margin-bottom: 30px;
+    }
+
+}
+
+.TILE {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    transition: 0.2s;
+    cursor: pointer;
+
+    .date {
+        position: absolute;
+        right: 0;
+        top: 0;
+        display: none;
+    }
+
+
+}
